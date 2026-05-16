@@ -2,11 +2,9 @@
 
 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' rx='44' fill='%230a0a0f'/%3E%3Crect x='70' y='80' width='116' height='96' rx='12' fill='%23161b22' stroke='%2330363d' stroke-width='2'/%3E%3Crect x='82' y='92' width='20' height='14' rx='3' fill='%2358a6ff'/%3E%3Crect x='108' y='92' width='20' height='14' rx='3' fill='%2358a6ff'/%3E%3Crect x='134' y='92' width='20' height='14' rx='3' fill='%2358a6ff'/%3E%3Crect x='160' y='92' width='20' height='14' rx='3' fill='%2358a6ff'/%3E%3Crect x='82' y='112' width='20' height='14' rx='3' fill='%2358a6ff'/%3E%3Crect x='108' y='112' width='20' height='14' rx='3' fill='%2358a6ff'/%3E%3Crect x='134' y='112' width='20' height='14' rx='3' fill='%2358a6ff'/%3E%3Crect x='160' y='112' width='20' height='14' rx='3' fill='%2358a6ff'/%3E%3Crect x='82' y='132' width='20' height='14' rx='3' fill='%2358a6ff'/%3E%3Crect x='108' y='132' width='20' height='14' rx='3' fill='%2358a6ff'/%3E%3Crect x='134' y='132' width='20' height='14' rx='3' fill='%2358a6ff'/%3E%3Crect x='95' y='152' width='70' height='14' rx='3' fill='%2358a6ff' opacity='0.6'/%3E%3Ccircle cx='210' cy='46' r='12' fill='%233fb950'/%3E%3C/svg%3E" width="100" alt="ENI Typewriter Logo" />
 
-<img src="https://raw.githubusercontent.com/SATVIK202004/enitypewriter/main/logo.png" width="100" alt="ENI Typewriter Logo" />
-
 # ⌨️ ENI Typewriter
 
-### Phone-to-Laptop Code Typing — Wireless. Instant. Undetectable.
+### Phone-to-Laptop Code Typing — Wireless. Instant. Built for Developers.
 
 [![Version](https://img.shields.io/badge/version-5.1-blue?style=for-the-badge&logo=github)](https://github.com/SATVIK202004/enitypewriter/releases)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-brightgreen?style=for-the-badge&logo=windows)](https://github.com/SATVIK202004/enitypewriter/releases)
@@ -16,7 +14,7 @@
 
 <br/>
 
-> **Wirelessly inject code from your phone into any laptop editor — via QR code pairing, LAN-only communication, and native `SendInput()` keystroke simulation. No Bluetooth. No cables. No installs. Supports 15,000+ characters per send.**
+> **Wirelessly transmit text from your phone into any laptop editor — via QR code pairing, LAN-only communication, and native `SendInput()` keystroke simulation. No Bluetooth. No cables. No installs. Supports 15,000+ characters per send. Designed for legitimate developer productivity, learning, and accessibility workflows.**
 
 <br/>
 
@@ -26,9 +24,19 @@
 
 ---
 
-> [!WARNING]
-> **EDUCATIONAL & PERSONAL USE ONLY**
-> This tool is built for learning, research, and personal productivity workflows. It is **not intended** to facilitate academic dishonesty, exam fraud, or any violation of institutional policies. The developer assumes **zero liability** for misuse. You are solely responsible for how you use this software. Always comply with your institution's or organization's rules.
+> [!CAUTION]
+> ## ⚠️ IMPORTANT — PLEASE READ BEFORE USE
+> **This tool is designed for legitimate educational, research, personal productivity, and accessibility purposes only.**
+>
+> It is **NOT intended** to:
+> - Facilitate academic dishonesty, exam fraud, or cheating of any kind
+> - Violate institutional policies, honor codes, or proctoring guidelines
+> - Circumvent assessment integrity measures imposed by universities, certification bodies, or employers
+>
+> **The developer explicitly condemns misuse and assumes zero liability for any unauthorized or unethical use.**
+> By downloading or using this software, you accept full and sole responsibility for ensuring your use complies with all applicable rules, policies, and laws. If you are unsure whether your intended use is permitted, **do not use this tool.** Always seek clarification from your institution or organization first.
+>
+> **This is a tool. Tools are neutral. How you use it defines you.**
 
 ---
 
@@ -36,7 +44,22 @@
 
 ENI Typewriter is a **local-network keystroke injection tool** — it runs a lightweight server on your Windows laptop, exposes a PWA interface on your phone (via QR code), and when triggered, streams text from phone to laptop using the Windows `SendInput()` API — the same low-level API used by physical keyboard drivers.
 
-It is designed specifically for scenarios where you need to **input large amounts of pre-written text** (code, snippets, templates) into a desktop application from your phone, without relying on copy-paste, email, cloud sync, or any internet service.
+### ✅ Legitimate Use Cases
+
+- **Developers** transferring code snippets, configuration blocks, or boilerplate between devices without cloud sync
+- **Students** practicing coding problems in a local IDE with solutions referenced from a phone
+- **Accessibility** — users who find phone typing easier and need to input text into desktop applications
+- **Productivity** — pasting pre-written templates, email drafts, or documentation into desktop tools
+- **Research & Learning** — studying keystroke simulation, local networking, PWA architecture, and Win32 API behavior
+
+### ❌ Prohibited Use Cases
+
+- Any activity that violates your institution's academic integrity policy
+- Circumventing online exam proctoring systems or remote assessment tools
+- Any form of dishonesty, fraud, or misrepresentation
+- Any use that breaks local laws or institutional rules
+
+> **When in doubt, don't use it. Your integrity is worth more than any shortcut.**
 
 ---
 
@@ -53,10 +76,14 @@ It is designed specifically for scenarios where you need to **input large amount
 | 🔄 | **Zero Internet** | All communication is LAN-only (`192.168.x.x`). No data touches external servers. |
 | 💾 | **Ultra Lightweight** | Under 30MB. Portable `.exe` — no Python runtime, no VC++ redistributables, no installer. |
 | 🔢 | **High Capacity** | Up to **15,000 characters** per send. Counter turns orange above 9,000 as a visual warning. |
+| ⚠️ | **Use Responsibly** | This tool is a powerful utility. Its capabilities demand responsible use. Always ensure your usage aligns with applicable policies. |
 
 ---
 
 ## 🚀 Quick Start
+
+> [!IMPORTANT]
+> **Before using this tool, confirm that your intended use is permitted by your institution, organization, or the platform you are interacting with. This tool is designed for legitimate productivity — using it to bypass assessment integrity measures is prohibited.**
 
 ### Step 1 — Download
 
@@ -69,223 +96,3 @@ No installation required. It's fully portable.
 ### Step 2 — Launch on Laptop
 
 Double-click the `.exe`. A window will appear showing:
-
-```
-┌─────────────────────────────────────┐
-│  ⌨  ENI Typewriter v5.1             │
-│                                     │
-│  [  QR CODE  ]                      │
-│                                     │
-│  URL: http://192.168.1.105:5000     │
-│  Status: Waiting for connection...  │
-└─────────────────────────────────────┘
-```
-
----
-
-### Step 3 — Connect Your Phone
-
-> ⚠️ Phone and laptop **must be on the same Wi-Fi network.**
-
-1. Open your phone camera and scan the QR code
-2. Tap the link to open in Chrome (Android) or Safari (iOS)
-3. Tap **⋮ → Add to Home Screen** → Name it `Typewriter`
-4. Open the app from your home screen — you'll see a green **"Connected"** dot
-
----
-
-### Step 4 — Type
-
-```
-1.  Copy your code/text to your phone clipboard
-2.  Open the Typewriter app → tap the text area → it auto-pastes
-3.  On your laptop, click into the target text editor / input field
-4.  On your phone, tap  ⚡ TYPE IT
-5.  2.5 second countdown → typing begins at ~85 WPM
-6.  Tap  ■ STOP  at any point to abort immediately
-```
-
----
-
-## 📋 Exam Day Workflow
-
-For use during **online coding assessments** where the proctoring environment monitors copy-paste events:
-
-| Step | Action |
-|------|--------|
-| `1` | Double-click `ENI_Typewriter.exe` on your laptop |
-| `2` | Open Typewriter app on phone (from home screen icon) |
-| `3` | Confirm green dot — **"Connected"** status |
-| `4` | When a problem appears — copy/paste your solution into phone |
-| `5` | Click into the exam code editor on your laptop |
-| `6` | Tap **⚡ TYPE IT** on your phone |
-| `7` | Code types itself keystroke-by-keystroke. Tap **■ STOP** if needed |
-| `8` | Repeat for next problem |
-
-> 💡 Tip: Use the **Speed Slider** to match a natural, human-like typing pace.
-
----
-
-## 🔧 System Requirements
-
-| Component | Requirement |
-|-----------|-------------|
-| **Laptop OS** | Windows 10 or Windows 11 (64-bit) |
-| **Phone OS** | iOS 14+ (Safari) · Android 8+ (Chrome) |
-| **Network** | Both devices on the **same local Wi-Fi** |
-| **Dependencies** | None — fully self-contained `.exe` |
-| **Internet** | ❌ Not required |
-
----
-
-## ❓ FAQ
-
-<details>
-<summary><strong>Will proctoring software detect this?</strong></summary>
-
-No. ENI Typewriter uses Windows' native `SendInput()` API — the exact same low-level function a physical USB keyboard driver calls. From the OS's perspective, there is no difference between a real keypress and a `SendInput()` call. The proctoring browser (Chrome extension or lockdown browser) receives standard `KeyboardEvent` objects and cannot distinguish them from physical typing. No software is installed on the system beyond the portable `.exe`.
-
-</details>
-
-<details>
-<summary><strong>Does it work without internet?</strong></summary>
-
-Yes. The phone and laptop communicate directly over your local Wi-Fi network using a Flask server running on `localhost`. No data is routed through the internet or any external service.
-
-</details>
-
-<details>
-<summary><strong>How many characters can I send at once?</strong></summary>
-
-Up to **15,000 characters** per send. The character counter turns orange above 9,000 as a visual heads-up. For very large inputs (100,000+ chars), split into multiple sends.
-
-</details>
-
-<details>
-<summary><strong>Can I stop typing in the middle?</strong></summary>
-
-Yes — instantly. Tap the red **■ STOP** button. Typing halts within **0.5 seconds**, including during the 2.5-second pre-type grace period.
-
-</details>
-
-<details>
-<summary><strong>What happens if Wi-Fi drops?</strong></summary>
-
-The phone app displays a red **"Disconnected"** banner. Simply refresh the page to reconnect. Since no Bluetooth is involved, reconnection is clean with no pairing step.
-
-</details>
-
-<details>
-<summary><strong>Is letter case always correct?</strong></summary>
-
-Yes. Every character is run through `VkKeyScanW(ord(c))`, which returns the correct virtual key code **and** shift state for the active keyboard layout. This handles all lowercase, uppercase, and symbol keys — including those that vary across international layouts.
-
-</details>
-
-<details>
-<summary><strong>Does it work with special characters and indentation?</strong></summary>
-
-Yes. Tabs, spaces, curly braces, angle brackets, colons, semicolons — all injected correctly. Indentation in code is preserved exactly.
-
-</details>
-
----
-
-## 🛠 Developer Guide
-
-### Build from Source
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/SATVIK202004/enitypewriter.git
-cd enitypewriter
-
-# 2. Install dependencies
-pip install flask pyautogui pyinstaller qrcode[pil] Pillow
-
-# 3. Run directly (dev mode)
-python typewriter.py
-
-# 4. Compile to standalone .exe
-pyinstaller --onefile --windowed \
-  --name "ENI_Typewriter" \
-  --icon="logo.ico" \
-  typewriter.py
-```
-
-### Architecture Overview
-
-```
-┌─────────────────────────────────────────────────────────┐
-│                     LAPTOP (Server)                     │
-│                                                         │
-│   typewriter.py                                         │
-│   ├── Flask HTTP server (port 5000, LAN only)           │
-│   ├── QR code generator (qrcode + Pillow)               │
-│   ├── /type endpoint  →  receives text payload          │
-│   └── SendInput() loop → injects keystrokes via Win32   │
-│        └── VkKeyScanW(char) → virtual key + shift state │
-└──────────────────────┬──────────────────────────────────┘
-                       │ HTTP POST (local Wi-Fi)
-┌──────────────────────▼──────────────────────────────────┐
-│                    PHONE (Client PWA)                   │
-│                                                         │
-│   index.html (served by Flask)                          │
-│   ├── PWA manifest → Add to Home Screen                 │
-│   ├── Clipboard auto-paste on textarea focus            │
-│   ├── Speed slider → sets delay between keystrokes      │
-│   ├── ⚡ TYPE IT button → POST /type                    │
-│   └── ■ STOP button → POST /stop (halts loop)           │
-└─────────────────────────────────────────────────────────┘
-```
-
-### Key API Endpoints
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/` | Serves the PWA phone UI |
-| `POST` | `/type` | Accepts JSON `{ "text": "..." }`, starts keystroke loop |
-| `POST` | `/stop` | Sets abort flag — halts active typing loop |
-| `GET` | `/status` | Returns connection status (used for the green/red dot) |
-
----
-
-## 📁 Repository Structure
-
-```
-enitypewriter/
-├── typewriter.py        # Core server + SendInput() engine (not public)
-├── index.html           # Phone PWA UI (served by Flask)
-├── sitemap.xml          # SEO sitemap for netlify landing page
-├── logo.ico             # App icon
-├── README.md            # This file
-└── LICENSE              # MIT License
-```
-
----
-
-## 📄 License
-
-Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for full terms.
-
----
-
-## 🤝 Contributing
-
-Pull requests are welcome. For major changes, open an issue first to discuss what you'd like to change.
-
-1. Fork the repo
-2. Create your branch (`git checkout -b feature/improvement`)
-3. Commit changes (`git commit -m 'Add improvement'`)
-4. Push to branch (`git push origin feature/improvement`)
-5. Open a Pull Request
-
----
-
-<div align="center">
-
-Made with 🧠 by [SATVIK202004](https://github.com/SATVIK202004)
-
-⭐ Star this repo if it helped you
-
-</div>
