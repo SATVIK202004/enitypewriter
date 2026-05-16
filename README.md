@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' rx='44' fill='%230a0a0f'/%3E%3Crect x='70' y='80' width='116' height='96' rx='12' fill='%23161b22' stroke='%2330363d' stroke-width='2'/%3E%3Crect x='82' y='92' width='20' height='14' rx='3' fill='%2358a6ff'/%3E%3Crect x='108' y='92' width='20' height='14' rx='3' fill='%2358a6ff'/%3E%3Crect x='134' y='92' width='20' height='14' rx='3' fill='%2358a6ff'/%3E%3Crect x='160' y='92' width='20' height='14' rx='3' fill='%2358a6ff'/%3E%3Crect x='82' y='112' width='20' height='14' rx='3' fill='%2358a6ff'/%3E%3Crect x='108' y='112' width='20' height='14' rx='3' fill='%2358a6ff'/%3E%3Crect x='134' y='112' width='20' height='14' rx='3' fill='%2358a6ff'/%3E%3Crect x='160' y='112' width='20' height='14' rx='3' fill='%2358a6ff'/%3E%3Crect x='82' y='132' width='20' height='14' rx='3' fill='%2358a6ff'/%3E%3Crect x='108' y='132' width='20' height='14' rx='3' fill='%2358a6ff'/%3E%3Crect x='134' y='132' width='20' height='14' rx='3' fill='%2358a6ff'/%3E%3Crect x='95' y='152' width='70' height='14' rx='3' fill='%2358a6ff' opacity='0.6'/%3E%3Ccircle cx='210' cy='46' r='12' fill='%233fb950'/%3E%3C/svg%3E" width="100" alt="ENI Typewriter Logo" />
+
 <img src="https://raw.githubusercontent.com/SATVIK202004/enitypewriter/main/logo.png" width="100" alt="ENI Typewriter Logo" />
 
 # ⌨️ ENI Typewriter
