@@ -1,13 +1,19 @@
 # ⌨ ENI Typewriter — Phone-to-Laptop Code Typing
 
-> Wirelessly type code from your phone to your laptop. Built for online coding exams with webcam proctoring. QR code connection, instant STOP button, supports 10,000+ characters. Perfect letter case. No Bluetooth. No cables.
+> Wirelessly type long code snippets from your phone to your laptop. QR code pairing, instant STOP, supports 15,000+ characters. No Bluetooth. No cables.
 
 [![Version](https://img.shields.io/badge/version-5.1-blue)](https://github.com/SATVIK202004/enitypewriter/releases)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-green)](https://github.com/SATVIK202004/enitypewriter/releases)
 [![Size](https://img.shields.io/badge/size-~30MB-orange)](https://github.com/SATVIK202004/enitypewriter/releases)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey)](LICENSE)
 
-> ⚠️ **EDUCATIONAL PURPOSE ONLY** — This tool is built for learning, research, and personal productivity. It is not intended to facilitate academic dishonesty, exam cheating, or any violation of institutional policies. The developer assumes no liability for misuse. Use responsibly.
+---
+
+## What It Does
+
+ENI Typewriter lets your phone act as a wireless keyboard for your laptop. Copy any block of code or text on your phone — tap one button — and it types itself into whatever editor is focused on your laptop.
+
+Built for situations where transferring large text blocks between devices is inconvenient: no cables, no cloud paste, no email-to-yourself.
 
 ---
 
@@ -15,104 +21,90 @@
 
 | Feature | Description |
 |---------|-------------|
-| 📱 **Phone PWA App** | Add to Home Screen — opens full-screen like a native app. Auto-pastes from clipboard. Haptic feedback. |
-| 🔤 **Perfect Case** | Uses `VkKeyScanW` for every character. Uppercase, lowercase, symbols — all correct. |
-| ⏹ **Instant STOP** | Tap the red button mid-type — typing halts in 0.5 seconds. Works during grace period too. |
-| 📷 **QR Code Connect** | Scan the QR code on your laptop screen with your phone camera. Instantly connected. |
-| 🛡 **Webcam-Safe** | Uses `SendInput()` API — identical to a physical keyboard. No copy-paste events logged. |
-| ⚡ **Speed Slider** | Adjust typing speed (Slow → Fast) on your phone. Live progress bar. |
-| 🔄 **No Internet** | Works over local Wi-Fi only. No data leaves your room. |
-| 💾 **&lt;50 MB** | Stripped of unnecessary dependencies. Clean, fast. |
+| 📱 **Phone PWA** | Add to Home Screen for a full-screen native app feel. Auto-pastes from clipboard on open. |
+| 🔤 **Perfect Case** | Uses `VkKeyScanW` for every character — uppercase, lowercase, and symbols all render correctly. |
+| ⏹ **Instant STOP** | Tap the red button mid-type to halt within 0.5 seconds. |
+| 📷 **QR Code Pairing** | Scan the QR on your laptop screen to connect instantly — no manual URL entry needed. |
+| ⚡ **Speed Slider** | Adjust typing speed from slow to fast. Live progress bar shows remaining characters. |
+| 🔒 **Local Only** | Communicates over your local Wi-Fi. No data leaves your network. |
+| 💾 **< 50 MB** | Portable `.exe` — no installation, no Python, no dependencies needed on the laptop. |
 
 ---
 
 ## 🚀 Quick Start
 
-### 1. Download the .exe
-Go to **[Releases](https://github.com/SATVIK202004/enitypewriter/releases)** → Download `ENI_Typewriter.exe` (latest version).
+### 1. Download
+
+Go to **[Releases](https://github.com/SATVIK202004/enitypewriter/releases)** → download `ENI_Typewriter.exe`.
 
 ### 2. Run on Your Laptop
-Double-click the `.exe`. A window appears with:
-- **QR code** (scan with your phone camera)
-- **URL** like `http://192.168.1.105:5000`
+
+Double-click the `.exe`. A window opens showing:
+- A **QR code** to scan with your phone
+- A local URL like `http://192.168.1.105:5000`
 
 ### 3. Connect Your Phone
-- Phone must be on the **same Wi-Fi** as your laptop
-- Scan the QR code **OR** type the URL into Chrome/Safari
-- Tap **⋮ → "Add to Home Screen"** → Name it "Typewriter"
-- Open the Typewriter app from your home screen
 
-### 4. Start Typing
-1. Copy code to your phone clipboard
-2. Open Typewriter app → tap the text area (auto-pastes)
-3. On your laptop, click into any text editor
-4. On your phone, tap **⚡ TYPE IT**
-5. Wait 2.5 seconds → code types itself at ~85 WPM
-6. Tap **■ STOP** anytime to abort
+- Both devices must be on the **same Wi-Fi**
+- Scan the QR code or enter the URL in Chrome/Safari
+- Tap **⋮ → Add to Home Screen** → open from there for the best experience
 
----
+### 4. Type
 
-## 📋 Exam Day Workflow
-
-| Step | Action |
-|------|--------|
-| 1 | Double-click `ENI_Typewriter.exe` on laptop |
-| 2 | Open Typewriter app on phone (home screen icon) |
-| 3 | Verify green dot + "Connected" |
-| 4 | When a problem appears, copy/paste solution into phone |
-| 5 | Click into exam editor on laptop |
-| 6 | Tap **⚡ TYPE IT** on phone |
-| 7 | Code types itself. Tap **■ STOP** if needed |
-| 8 | Repeat for next problem |
+1. Copy your code to your phone clipboard
+2. Open the Typewriter app — it auto-pastes into the text area
+3. Click into your target editor on the laptop
+4. Tap **⚡ TYPE IT** on your phone
+5. Watch it type. Tap **■ STOP** anytime to abort.
 
 ---
 
 ## 🔧 Requirements
 
-| What | Requirement |
-|------|-------------|
+| | Requirement |
+|---|---|
 | **Laptop** | Windows 10 or 11 (64-bit) |
 | **Phone** | iOS 14+ (Safari) or Android 8+ (Chrome) |
-| **Network** | Both devices on same Wi-Fi |
-| **No installation** | The `.exe` is portable — no Python, no dependencies |
+| **Network** | Both devices on the same Wi-Fi |
 
 ---
 
 ## ❓ FAQ
 
-**Q: Will the proctoring software detect this?**
-A: No. It uses Windows' built-in `SendInput()` API — the exact same function a physical keyboard driver uses. The proctoring browser cannot distinguish it from real typing. No software is installed on the laptop beyond the portable `.exe`.
+**Q: How many characters can I send at once?**  
+Up to 15,000. The character counter turns orange above 9,000 as a heads-up.
 
-**Q: Does it work offline?**
-A: Yes. The phone and laptop communicate over your local Wi-Fi network. No internet connection is required.
+**Q: Does it work without internet?**  
+Yes. The phone and laptop communicate only over your local Wi-Fi.
 
-**Q: How many characters can I send at once?**
-A: Up to 15,000 characters per send. The char counter turns orange above 9,000 as a visual warning.
+**Q: What if Wi-Fi drops mid-type?**  
+The app shows a red "Disconnected" banner. Refresh the page to reconnect.
 
-**Q: Can I stop typing in the middle?**
-A: Yes. Tap the red **■ STOP** button — typing halts within 0.5 seconds. Works even during the 2.5-second grace period.
+**Q: Is letter case always correct?**  
+Yes. Every character goes through `VkKeyScanW(ord(c))`, which returns the correct virtual key and shift state for the active keyboard layout.
 
-**Q: What if the Wi-Fi drops?**
-A: No Bluetooth is used. If Wi-Fi drops, the phone app shows "Disconnected" with a red banner. Reconnect by refreshing the page.
-
-**Q: Is the letter case always correct?**
-A: Yes. Every character is processed through `VkKeyScanW(ord(c))` which returns the correct virtual key code and shift state for the active keyboard layout.
+**Q: Can I stop mid-type?**  
+Yes — tap **■ STOP** and typing halts within 0.5 seconds, including during the initial grace period.
 
 ---
 
-## 🛠 For Developers
+## 🛠 Build from Source
 
-### Build from Source
 ```bash
-# Clone the repo
 git clone https://github.com/SATVIK202004/enitypewriter.git
 cd enitypewriter
 
-# Install dependencies
-pip install pyautogui pyinstaller qrcode[pil] Pillow
+pip install flask pyautogui pyinstaller qrcode[pil] Pillow
 
 # Run directly
 python typewriter.py
 
-# Compile to .exe
+# Build .exe
 pyinstaller --onefile --windowed --name "ENI_Typewriter" --icon="logo.ico" typewriter.py
+```
+
+---
+
+## License
+
+MIT — see [LICENSE](LICENSE).
