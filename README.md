@@ -7,6 +7,8 @@
 [![Size](https://img.shields.io/badge/size-~30MB-orange)](https://github.com/SATVIK202004/enitypewriter/releases)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey)](LICENSE)
 
+> ⚠️ **EDUCATIONAL PURPOSE ONLY** — This tool is built for learning, research, and personal productivity. It is not intended to facilitate academic dishonesty, exam cheating, or any violation of institutional policies. The developer assumes no liability for misuse. Use responsibly.
+
 ---
 
 ## ✨ Features
