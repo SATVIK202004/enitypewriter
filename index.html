@@ -3,280 +3,408 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0d1117">
-<meta name="description" content="ENI Typewriter — Wirelessly type code from your phone to your laptop during exams. QR code connection, STOP button, 10,000+ character support.">
+<meta name="theme-color" content="#0a0a0f">
+<meta name="description" content="ENI Typewriter — Wirelessly type code from your phone to your laptop. QR connection, instant STOP, 10k+ chars. Built for online exams.">
 <title>ENI Typewriter — Phone-to-Laptop Code Typing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  /* ── Reset & Base ── */
   *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{
-    background:#0d1117;color:#c9d1d9;
-    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+    background:#0a0a0f;color:#d1d5db;
+    font-family:'Inter',system-ui,sans-serif;
     line-height:1.6;overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
   }
+  code,pre{font-family:'JetBrains Mono','Fira Code',monospace}
+
+  /* ── Animated Background ── */
+  .bg-particles{
+    position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;
+    overflow:hidden;
+  }
+  .bg-orb{
+    position:absolute;border-radius:50%;filter:blur(120px);opacity:0.12;
+    animation:floatOrb 20s infinite ease-in-out;
+  }
+  .bg-orb:nth-child(1){width:600px;height:600px;background:#58a6ff;top:-200px;left:-150px;animation-delay:0s}
+  .bg-orb:nth-child(2){width:500px;height:500px;background:#3fb950;bottom:-200px;right:-150px;animation-delay:-7s}
+  .bg-orb:nth-child(3){width:400px;height:400px;background:#8b5cf6;top:50%;left:50%;transform:translate(-50%,-50%);animation-delay:-14s}
+  @keyframes floatOrb{
+    0%,100%{transform:translate(0,0) scale(1)}
+    25%{transform:translate(80px,-60px) scale(1.15)}
+    50%{transform:translate(-40px,40px) scale(0.9)}
+    75%{transform:translate(-70px,-30px) scale(1.1)}
+  }
+
+  .grid-bg{
+    position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.03;
+    background-image:linear-gradient(rgba(88,166,255,0.3) 1px,transparent 1px),linear-gradient(90deg,rgba(88,166,255,0.3) 1px,transparent 1px);
+    background-size:60px 60px;
+  }
+
+  /* ── Nav ── */
   nav{
     position:sticky;top:0;z-index:100;
-    background:rgba(13,17,23,0.92);backdrop-filter:blur(20px);
-    border-bottom:1px solid #21262d;padding:14px 24px;
-    display:flex;align-items:center;justify-content:space-between;
+    background:rgba(10,10,15,0.85);backdrop-filter:blur(24px) saturate(180%);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+    padding:14px 28px;display:flex;align-items:center;justify-content:space-between;
   }
-  nav .logo{font-weight:800;font-size:1.1rem;color:#58a6ff;letter-spacing:-0.3px}
-  nav .logo span{color:#3fb950}
-  nav a{color:#8b949e;text-decoration:none;font-size:0.85rem;font-weight:500;transition:color .2s}
-  nav a:hover{color:#e6edf3}
+  nav .logo{
+    font-weight:900;font-size:1.15rem;color:#fff;letter-spacing:-0.5px;
+    display:flex;align-items:center;gap:8px;
+  }
+  nav .logo .icon{font-size:1.4rem}
+  nav .logo span{background:linear-gradient(135deg,#58a6ff,#3fb950);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  nav .links{display:flex;gap:28px;align-items:center}
+  nav a{color:#9ca3af;text-decoration:none;font-size:0.85rem;font-weight:500;transition:color .2s;position:relative}
+  nav a:hover{color:#fff}
+  nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:#58a6ff;border-radius:2px;transition:width .25s}
+  nav a:hover::after{width:100%}
+
+  /* ── Hero ── */
   .hero{
-    text-align:center;padding:80px 24px 60px;
-    background:radial-gradient(ellipse at 50% 0%,rgba(88,166,255,0.08) 0%,transparent 60%);
+    position:relative;z-index:1;text-align:center;
+    padding:100px 24px 80px;
   }
-  .hero .badge{
-    display:inline-block;background:#161b22;border:1px solid #30363d;
-    border-radius:20px;padding:5px 14px;font-size:0.75rem;color:#8b949e;
-    margin-bottom:20px;letter-spacing:0.4px;
+  .hero .pill{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(22,27,34,0.8);border:1px solid rgba(255,255,255,0.08);
+    border-radius:40px;padding:6px 18px;font-size:0.8rem;color:#9ca3af;
+    margin-bottom:24px;backdrop-filter:blur(10px);
+    animation:fadeInUp 0.6s ease-out;
   }
-  .hero .badge .green{color:#3fb950;font-weight:600}
-  .hero h1{font-size:clamp(2rem,6vw,3.2rem);font-weight:900;letter-spacing:-1px;line-height:1.1}
-  .hero h1 .blue{color:#58a6ff}
-  .hero h1 .green{color:#3fb950}
-  .hero p{max-width:580px;margin:18px auto 0;color:#8b949e;font-size:1.05rem}
-  .btn-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+  .hero .pill .live{width:8px;height:8px;background:#3fb950;border-radius:50%;animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+  .hero h1{
+    font-size:clamp(2.2rem,6.5vw,3.8rem);font-weight:900;letter-spacing:-1.5px;
+    line-height:1.08;max-width:750px;margin:0 auto;
+    animation:fadeInUp 0.6s ease-out 0.1s both;
+  }
+  .hero h1 .gradient-text{
+    background:linear-gradient(135deg,#58a6ff 0%,#3fb950 50%,#8b5cf6 100%);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  }
+  .hero h1 .white{color:#f0f0f0}
+  .hero .subtitle{
+    max-width:560px;margin:20px auto 0;color:#6b7280;font-size:1.1rem;font-weight:400;
+    animation:fadeInUp 0.6s ease-out 0.2s both;
+  }
+  .hero .btn-row{
+    display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:36px;
+    animation:fadeInUp 0.6s ease-out 0.3s both;
+  }
+  @keyframes fadeInUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+  /* ── Buttons ── */
   .btn{
     display:inline-flex;align-items:center;gap:8px;
-    padding:14px 28px;border-radius:10px;font-weight:700;font-size:0.95rem;
-    text-decoration:none;transition:all .15s;cursor:pointer;border:none;
+    padding:15px 30px;border-radius:12px;font-weight:700;font-size:0.95rem;
+    text-decoration:none;transition:all .2s;cursor:pointer;border:none;
+    position:relative;overflow:hidden;
   }
-  .btn-primary{background:#238636;color:#fff}
-  .btn-primary:hover{background:#2ea043;transform:translateY(-1px);box-shadow:0 8px 24px rgba(35,134,54,0.25)}
-  .btn-outline{background:transparent;color:#c9d1d9;border:1px solid #30363d}
-  .btn-outline:hover{background:#161b22;border-color:#58a6ff}
-  .section{padding:60px 24px;max-width:1024px;margin:0 auto}
-  .section h2{font-size:1.6rem;font-weight:800;text-align:center;margin-bottom:40px;letter-spacing:-0.5px}
-  .section h2 .blue{color:#58a6ff}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+  .btn::after{content:'';position:absolute;inset:0;border-radius:12px;opacity:0;transition:opacity .2s}
+  .btn-glow{background:linear-gradient(135deg,#238636,#2ea043);color:#fff;box-shadow:0 4px 20px rgba(35,134,54,0.3)}
+  .btn-glow:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(35,134,54,0.45)}
+  .btn-ghost{background:rgba(255,255,255,0.04);color:#d1d5db;border:1px solid rgba(255,255,255,0.1)}
+  .btn-ghost:hover{background:rgba(255,255,255,0.08);border-color:rgba(88,166,255,0.4);color:#fff}
+
+  /* ── Stats Bar ── */
+  .stats-bar{
+    position:relative;z-index:1;
+    background:rgba(22,27,34,0.7);backdrop-filter:blur(16px);
+    border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05);
+    padding:36px 24px;text-align:center;
+  }
+  .stats-bar .stats{display:flex;justify-content:center;gap:50px;flex-wrap:wrap}
+  .stats-bar .stat{text-align:center}
+  .stats-bar .stat .num{font-size:2.3rem;font-weight:900;color:#fff}
+  .stats-bar .stat .num.green{color:#3fb950}
+  .stats-bar .stat .num.blue{color:#58a6ff}
+  .stats-bar .stat .num.purple{color:#8b5cf6}
+  .stats-bar .stat .label{font-size:0.8rem;color:#6b7280;margin-top:4px;font-weight:500}
+
+  /* ── Sections ── */
+  .section{position:relative;z-index:1;padding:80px 24px;max-width:1100px;margin:0 auto}
+  .section-header{text-align:center;margin-bottom:56px}
+  .section-header h2{font-size:2rem;font-weight:900;letter-spacing:-0.8px;color:#f0f0f0}
+  .section-header h2 span{background:linear-gradient(135deg,#58a6ff,#3fb950);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .section-header p{color:#6b7280;margin-top:10px;font-size:1rem;max-width:500px;margin-left:auto;margin-right:auto}
+
+  /* ── Feature Cards ── */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
   .card{
-    background:#161b22;border:1px solid #21262d;border-radius:14px;padding:28px 24px;
-    transition:all .25s;position:relative;overflow:hidden;
+    background:rgba(22,27,34,0.6);backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.06);border-radius:18px;
+    padding:32px 28px;transition:all .3s;position:relative;overflow:hidden;
   }
-  .card:hover{border-color:#30363d;transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,0.3)}
-  .card .icon{font-size:1.8rem;margin-bottom:14px}
-  .card h3{font-size:1.05rem;font-weight:700;margin-bottom:8px;color:#e6edf3}
-  .card p{font-size:0.88rem;color:#8b949e;line-height:1.55}
-  .card .tag{
-    display:inline-block;background:#0d1117;border:1px solid #21262d;
-    border-radius:6px;padding:3px 10px;font-size:0.7rem;color:#58a6ff;
-    margin-top:14px;font-weight:600;letter-spacing:0.3px;
+  .card::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(88,166,255,0.3),transparent);
+    opacity:0;transition:opacity .3s;
   }
-  .highlight-bar{
-    background:#161b22;border-top:1px solid #21262d;border-bottom:1px solid #21262d;
-    padding:32px 24px;text-align:center;
+  .card:hover::before{opacity:1}
+  .card:hover{border-color:rgba(88,166,255,0.2);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,0.4)}
+  .card .card-icon{font-size:2rem;margin-bottom:16px;display:block}
+  .card h3{font-size:1.1rem;font-weight:700;color:#e5e7eb;margin-bottom:8px}
+  .card p{font-size:0.9rem;color:#6b7280;line-height:1.6}
+  .card .chip{
+    display:inline-block;background:rgba(88,166,255,0.1);border:1px solid rgba(88,166,255,0.2);
+    border-radius:8px;padding:4px 12px;font-size:0.72rem;color:#58a6ff;font-weight:600;
+    margin-top:16px;letter-spacing:0.3px;
   }
-  .highlight-bar .stats{display:flex;justify-content:center;gap:40px;flex-wrap:wrap}
-  .highlight-bar .stat{text-align:center}
-  .highlight-bar .stat .num{font-size:2rem;font-weight:900;color:#58a6ff}
-  .highlight-bar .stat .label{font-size:0.8rem;color:#8b949e;margin-top:4px}
-  .download-section{
-    background:#161b22;border:1px solid #21262d;border-radius:16px;
-    padding:40px 32px;text-align:center;max-width:600px;margin:0 auto;
+
+  /* ── Download Card ── */
+  .download-card{
+    background:rgba(22,27,34,0.6);backdrop-filter:blur(16px);
+    border:1px solid rgba(255,255,255,0.08);border-radius:24px;
+    padding:48px 36px;text-align:center;max-width:620px;margin:0 auto;
+    box-shadow:0 30px 70px rgba(0,0,0,0.5);
   }
-  .download-section h3{font-size:1.3rem;font-weight:800;margin-bottom:8px}
-  .download-section .size{font-size:0.8rem;color:#8b949e;margin-bottom:20px}
-  .download-section .platforms{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px}
-  .platform-tag{
-    background:#0d1117;border:1px solid #21262d;border-radius:8px;
-    padding:8px 16px;font-size:0.78rem;color:#8b949e;font-weight:500;
+  .download-card h3{font-size:1.4rem;font-weight:800;color:#f0f0f0;margin-bottom:6px}
+  .download-card .meta{font-size:0.85rem;color:#6b7280;margin-bottom:24px}
+  .download-card .platform-tags{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+  .download-card .ptag{
+    background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);
+    border-radius:8px;padding:8px 16px;font-size:0.75rem;color:#9ca3af;
   }
-  .steps{max-width:700px;margin:0 auto}
-  .step{
-    display:flex;gap:18px;align-items:flex-start;padding:20px 0;
-    border-bottom:1px solid #21262d;
-  }
-  .step:last-child{border-bottom:none}
+
+  /* ── Steps ── */
+  .steps{max-width:720px;margin:0 auto}
+  .step{display:flex;gap:20px;align-items:flex-start;padding:24px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+  .step:last-child{border:none}
   .step-num{
-    width:42px;height:42px;border-radius:50%;background:#0d1117;
-    border:2px solid #30363d;display:flex;align-items:center;justify-content:center;
-    font-weight:800;font-size:1rem;color:#58a6ff;flex-shrink:0;
+    width:46px;height:46px;border-radius:50%;
+    background:rgba(88,166,255,0.08);border:2px solid rgba(88,166,255,0.25);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:900;font-size:1.1rem;color:#58a6ff;flex-shrink:0;
   }
-  .step-content h4{font-weight:700;color:#e6edf3;margin-bottom:4px}
-  .step-content p{font-size:0.88rem;color:#8b949e}
+  .step-content h4{font-weight:700;color:#e5e7eb;margin-bottom:4px;font-size:1rem}
+  .step-content p{font-size:0.9rem;color:#6b7280}
   .step-content code{
-    background:#0d1117;border:1px solid #21262d;border-radius:5px;
-    padding:2px 7px;font-size:0.82rem;color:#58a6ff;
+    background:rgba(88,166,255,0.08);border:1px solid rgba(88,166,255,0.15);
+    border-radius:6px;padding:2px 8px;font-size:0.8rem;color:#58a6ff;
   }
+
+  /* ── Founder Section ── */
+  .founder-section{
+    position:relative;z-index:1;text-align:center;
+    padding:60px 24px;max-width:500px;margin:0 auto;
+  }
+  .founder-card{
+    background:rgba(22,27,34,0.5);backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.06);border-radius:20px;
+    padding:36px 28px;transition:all .3s;
+  }
+  .founder-card:hover{border-color:rgba(88,166,255,0.2);box-shadow:0 20px 50px rgba(0,0,0,0.4)}
+  .founder-avatar{
+    width:72px;height:72px;border-radius:50%;
+    background:linear-gradient(135deg,#58a6ff,#3fb950);
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 16px;font-size:2rem;font-weight:900;color:#fff;
+  }
+  .founder-card h3{font-size:1.3rem;font-weight:800;color:#f0f0f0}
+  .founder-card .role{font-size:0.85rem;color:#58a6ff;font-weight:600;margin-top:4px}
+  .founder-card .bio{font-size:0.88rem;color:#6b7280;margin-top:12px;line-height:1.6}
+
+  /* ── Footer ── */
   footer{
-    text-align:center;padding:40px 24px;border-top:1px solid #21262d;
-    color:#484f58;font-size:0.8rem;
+    position:relative;z-index:1;text-align:center;padding:40px 24px;
+    border-top:1px solid rgba(255,255,255,0.05);color:#4b5563;font-size:0.82rem;
   }
-  footer a{color:#58a6ff;text-decoration:none}
-  footer .heart{color:#f85149}
-  @media(max-width:600px){
-    nav{padding:12px 16px}
-    .hero{padding:50px 16px 40px}
-    .hero h1{font-size:1.7rem}
-    .section{padding:40px 16px}
-    .step-num{width:34px;height:34px;font-size:0.85rem}
+  footer a{color:#58a6ff;text-decoration:none;font-weight:500}
+  footer .heart{color:#f87171}
+
+  /* ── Responsive ── */
+  @media(max-width:640px){
+    nav .links{display:none}
+    .hero h1{font-size:1.8rem}
+    .stats-bar .stats{gap:28px}
+    .stats-bar .stat .num{font-size:1.6rem}
+    .section{padding:50px 16px}
+    .section-header h2{font-size:1.5rem}
+    .download-card{padding:32px 20px}
   }
 </style>
 </head>
 <body>
 
+<!-- Animated Background -->
+<div class="bg-particles">
+  <div class="bg-orb"></div>
+  <div class="bg-orb"></div>
+  <div class="bg-orb"></div>
+</div>
+<div class="grid-bg"></div>
+
+<!-- Navigation -->
 <nav>
-  <div class="logo">⌨ ENI <span>Typewriter</span></div>
-  <div>
-    <a href="#features">Features</a>&nbsp;&nbsp;&nbsp;
-    <a href="#download">Download</a>&nbsp;&nbsp;&nbsp;
+  <div class="logo"><span class="icon">⌨</span> ENI <span>Typewriter</span></div>
+  <div class="links">
+    <a href="#features">Features</a>
+    <a href="#download">Download</a>
     <a href="#howto">How To</a>
+    <a href="#founder">Founder</a>
   </div>
 </nav>
 
+<!-- Hero -->
 <section class="hero">
-  <div class="badge"><span class="green">v5.1</span> &nbsp;•&nbsp; Windows 10/11 &nbsp;•&nbsp; Free</div>
-  <h1>Type Code From<br>Your <span class="blue">Phone</span> to <span class="green">Laptop</span></h1>
-  <p>Paste any code into your phone. It types itself on your laptop at 85+ WPM. QR connection, STOP button, perfect letter case — built for online exams with webcam proctoring.</p>
+  <div class="pill"><span class="live"></span> v5.1 • Windows 10/11 • Free & Open Source</div>
+  <h1><span class="white">Type Code From Your</span><br><span class="gradient-text">Phone to Laptop</span></h1>
+  <p class="subtitle">Paste any code on your phone. It types itself on your laptop at 85+ WPM. QR connection, instant STOP button, 10,000+ character support — built for online coding exams.</p>
   <div class="btn-row">
-    <a href="https://github.com/SATVIK202004/enitypewriter/releases/latest/download/ENI_Typewriter.exe" class="btn btn-primary">⬇ Download .exe</a>
-    <a href="#howto" class="btn btn-outline">📖 How to Use</a>
+    <a href="https://github.com/SATVIK202004/enitypewriter/releases/latest/download/ENI_Typewriter.exe" class="btn btn-glow">⬇ Download .exe — Free</a>
+    <a href="#howto" class="btn btn-ghost">📖 How It Works</a>
   </div>
 </section>
 
-<div class="highlight-bar">
+<!-- Stats -->
+<div class="stats-bar">
   <div class="stats">
-    <div class="stat"><div class="num">10k+</div><div class="label">Characters per send</div></div>
-    <div class="stat"><div class="num">85 WPM</div><div class="label">Typing speed</div></div>
+    <div class="stat"><div class="num blue">10k+</div><div class="label">Characters per send</div></div>
+    <div class="stat"><div class="num green">85 WPM</div><div class="label">Typing speed</div></div>
     <div class="stat"><div class="num">Instant</div><div class="label">STOP button</div></div>
-    <div class="stat"><div class="num">&lt;50 MB</div><div class="label">App size</div></div>
+    <div class="stat"><div class="num purple">&lt;50 MB</div><div class="label">Portable .exe</div></div>
   </div>
 </div>
 
+<!-- Features -->
 <section class="section" id="features">
-  <h2>Why <span class="blue">Typewriter</span>?</h2>
+  <div class="section-header">
+    <h2>Why <span>Typewriter</span>?</h2>
+    <p>Every feature engineered for one purpose: getting code onto your exam screen, undetected.</p>
+  </div>
   <div class="grid">
     <div class="card">
-      <div class="icon">📱</div>
-      <h3>Phone App (PWA)</h3>
-      <p>Add to Home Screen — becomes a native app. No browser bars. Haptic feedback on every button. Paste from clipboard with one tap.</p>
-      <span class="tag">iOS + Android</span>
+      <span class="card-icon">📱</span>
+      <h3>Phone PWA App</h3>
+      <p>Add to Home Screen — becomes a native app. No browser bars. Haptic feedback on every tap. Auto-pastes from clipboard instantly.</p>
+      <span class="chip">iOS + Android</span>
     </div>
     <div class="card">
-      <div class="icon">🔤</div>
+      <span class="card-icon">🔤</span>
       <h3>Perfect Letter Case</h3>
-      <p>Every character uses VkKeyScanW — uppercase, lowercase, symbols, brackets, semicolons all come out exactly as written. No more mixed-case disasters.</p>
-      <span class="tag">C++ Engine</span>
+      <p>VkKeyScanW on every character. Uppercase, lowercase, brackets, semicolons — all render exactly as written. Zero mixed-case errors.</p>
+      <span class="chip">C++ Engine</span>
     </div>
     <div class="card">
-      <div class="icon">⏹</div>
+      <span class="card-icon">⏹</span>
       <h3>Instant STOP</h3>
-      <p>Typing runs in a background thread. Tap the red button — typing halts within 0.5 seconds. Works mid-character. Works during the 2.5s grace period too.</p>
-      <span class="tag">Thread-Safe</span>
+      <p>Typing runs in a background thread. Tap the red button — halts in 0.5s flat. Works mid-character. Works during the grace period.</p>
+      <span class="chip">Thread-Safe</span>
     </div>
     <div class="card">
-      <div class="icon">📷</div>
-      <h3>QR Code Connection</h3>
-      <p>Point your phone camera at the laptop screen. Scan the QR code. Instantly connected. No typing IP addresses. No Bluetooth pairing.</p>
-      <span class="tag">Wi-Fi Local</span>
+      <span class="card-icon">📷</span>
+      <h3>QR Code Connect</h3>
+      <p>Point your phone camera at the laptop screen. Scan the QR code. Connected. No typing IP addresses. No Bluetooth. No pairing dance.</p>
+      <span class="chip">Wi-Fi Local</span>
     </div>
     <div class="card">
-      <div class="icon">🛡</div>
+      <span class="card-icon">🛡</span>
       <h3>Webcam-Safe</h3>
-      <p>Uses Windows SendInput API — identical to a physical keyboard. No copy-paste events logged. No software installed on the laptop beyond the .exe. Invisible to browser proctoring.</p>
-      <span class="tag">Stealth</span>
+      <p>Uses Windows SendInput API — identical to a physical keyboard driver. No copy-paste events logged. No software installed beyond the portable .exe.</p>
+      <span class="chip">Stealth</span>
     </div>
     <div class="card">
-      <div class="icon">⚡</div>
-      <h3>Speed Slider</h3>
-      <p>Adjust typing speed from Slow to Fast directly on your phone. Real-time progress bar shows percentage complete. Live character counter turns orange above 9,000 chars.</p>
-      <span class="tag">Live Feedback</span>
+      <span class="card-icon">⚡</span>
+      <h3>Speed Slider + Progress</h3>
+      <p>Adjust speed from Slow to Fast on your phone. Live progress bar shows exact percentage. Char counter turns orange above 9,000.</p>
+      <span class="chip">Live Feedback</span>
     </div>
   </div>
 </section>
 
+<!-- Download -->
 <section class="section" id="download">
-  <h2>Download & <span class="blue">Install</span></h2>
-  <div class="download-section">
+  <div class="section-header">
+    <h2>Download & <span>Install</span></h2>
+    <p>One file. Double-click. Ready.</p>
+  </div>
+  <div class="download-card">
     <h3>📥 ENI_Typewriter.exe</h3>
-    <p class="size">~25–35 MB &nbsp;•&nbsp; Windows 10/11 &nbsp;•&nbsp; v5.1</p>
-    <a href="https://github.com/SATVIK202004/enitypewriter/releases/latest/download/ENI_Typewriter.exe" class="btn btn-primary" style="font-size:1rem;padding:16px 36px">⬇ Download .exe</a>
-    <p style="margin-top:16px;font-size:0.8rem;color:#8b949e">
-      <a href="https://github.com/SATVIK202004/enitypewriter/releases" style="color:#58a6ff">All releases →</a>
+    <p class="meta">~25–35 MB • Windows 10/11 • v5.1 • Portable</p>
+    <a href="https://github.com/SATVIK202004/enitypewriter/releases/latest/download/ENI_Typewriter.exe" class="btn btn-glow" style="font-size:1rem;padding:16px 38px">⬇ Download .exe</a>
+    <p style="margin-top:16px;font-size:0.82rem;color:#6b7280">
+      <a href="https://github.com/SATVIK202004/enitypewriter/releases" style="color:#58a6ff;font-weight:600">All releases →</a>
     </p>
-    <div class="platforms">
-      <span class="platform-tag">🖥 Windows 10</span>
-      <span class="platform-tag">🖥 Windows 11</span>
-      <span class="platform-tag">📱 iPhone (PWA)</span>
-      <span class="platform-tag">📱 Android (PWA)</span>
+    <div class="platform-tags">
+      <span class="ptag">🖥 Windows 10</span>
+      <span class="ptag">🖥 Windows 11</span>
+      <span class="ptag">📱 iPhone (PWA)</span>
+      <span class="ptag">📱 Android (PWA)</span>
     </div>
   </div>
 </section>
 
+<!-- How To -->
 <section class="section" id="howto">
-  <h2>How to <span class="blue">Use</span></h2>
+  <div class="section-header">
+    <h2>How to <span>Use</span></h2>
+    <p>Six steps. Five minutes. Zero stress.</p>
+  </div>
   <div class="steps">
     <div class="step">
       <div class="step-num">1</div>
       <div class="step-content">
         <h4>Download & Run the .exe</h4>
-        <p>Download <code>ENI_Typewriter.exe</code> from the Releases section. Double-click to run. A window appears with a QR code and a URL. Your laptop is now a server.</p>
+        <p>Download <code>ENI_Typewriter.exe</code> from the Releases section. Double-click. A window appears with a QR code and URL. Your laptop is now a server.</p>
       </div>
     </div>
     <div class="step">
       <div class="step-num">2</div>
       <div class="step-content">
         <h4>Connect Your Phone</h4>
-        <p>Make sure your phone is on the <strong>same Wi-Fi</strong> as your laptop. Open your phone camera, scan the QR code on the laptop screen, and tap the link. Or type the URL manually into Chrome/Safari.</p>
+        <p>Phone on <strong>same Wi-Fi</strong> as laptop. Scan the QR code on screen with your camera — or type the URL into Chrome/Safari manually.</p>
       </div>
     </div>
     <div class="step">
       <div class="step-num">3</div>
       <div class="step-content">
-        <h4>Add to Home Screen (App Install)</h4>
-        <p>In Chrome: tap <strong>⋮ → "Add to Home Screen"</strong>. In Safari: tap <strong>Share → "Add to Home Screen"</strong>. Name it "Typewriter". Now it opens full-screen — no browser bars, just the app.</p>
+        <h4>Add to Home Screen</h4>
+        <p>Chrome: <strong>⋮ → "Add to Home Screen"</strong>. Safari: <strong>Share → "Add to Home Screen"</strong>. Opens full-screen — no browser bars.</p>
       </div>
     </div>
     <div class="step">
       <div class="step-num">4</div>
       <div class="step-content">
         <h4>Paste Code & Type</h4>
-        <p>Copy any code to your phone clipboard. Open the Typewriter app. Tap the text area — it auto-pastes. Click into your exam editor on the laptop. Tap <strong>⚡ TYPE IT</strong>. Wait 2.5 seconds. Code types itself at 85 WPM.</p>
+        <p>Copy code to phone clipboard. Open app → tap text area (auto-pastes). Click into exam editor on laptop. Tap <strong>⚡ TYPE IT</strong>.</p>
       </div>
     </div>
     <div class="step">
       <div class="step-num">5</div>
       <div class="step-content">
         <h4>STOP Anytime</h4>
-        <p>Something goes wrong mid-type? Tap the red <strong>■ STOP</strong> button. Typing halts instantly — even during the 2.5s grace period. The TYPE IT button reappears. Paste corrected code and retry.</p>
+        <p>Mid-type issue? Tap <strong>■ STOP</strong>. Typing halts in 0.5s. Button reappears. Correct the code. Retry. No penalty.</p>
       </div>
     </div>
     <div class="step">
       <div class="step-num">6</div>
       <div class="step-content">
         <h4>Close When Done</h4>
-        <p>After your exam, click <strong>Stop Server</strong> on the laptop window, or simply close it. The phone app disconnects. No traces. No logs.</p>
+        <p>Click <strong>Stop Server</strong> or close the window. Phone disconnects. No traces. No logs. Done.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="tips" style="padding-top:0">
-  <h2>Pro <span class="blue">Tips</span></h2>
-  <div class="grid">
-    <div class="card">
-      <div class="icon">🎯</div>
-      <h3>Webcam Choreography</h3>
-      <p>Keep your phone on your lap. Raise it briefly to paste code (reads as "candidate holding chin while thinking"). The 2.5-second grace period gives you time to click back into the exam editor calmly.</p>
-    </div>
-    <div class="card">
-      <div class="icon">🔄</div>
-      <h3>Plagiarism Bypass</h3>
-      <p>Change variable names as you paste — the AST checker won't match. The typing comes through as keyboard input, not copy-paste. Structurally unique code every time.</p>
-    </div>
-    <div class="card">
-      <div class="icon">📶</div>
-      <h3>Wi-Fi Only</h3>
-      <p>The phone and laptop communicate over your local network. No internet needed. No data used. The connection never leaves your room.</p>
-    </div>
+<!-- Founder -->
+<section class="founder-section" id="founder">
+  <div class="founder-card">
+    <div class="founder-avatar">PS</div>
+    <h3>Peddisetty Venkat Satvik</h3>
+    <p class="role">Founder & Lead Developer</p>
+    <p class="bio">Built ENI Typewriter to help students focus on solving problems — not worrying about how to get the solution onto the screen. Computer science student, tool builder, exam survivor.</p>
   </div>
 </section>
 
+<!-- Footer -->
 <footer>
-  <p>Built with <span class="heart">❤</span> by <a href="https://github.com/SATVIK202004">ENI</a> &nbsp;•&nbsp; <a href="https://github.com/SATVIK202004/enitypewriter">GitHub Repo</a> &nbsp;•&nbsp; MIT License</p>
+  <p>Built with <span class="heart">❤</span> by <strong>Peddisetty Venkat Satvik</strong> &nbsp;•&nbsp; <a href="https://github.com/SATVIK202004/enitypewriter">GitHub Repo</a> &nbsp;•&nbsp; MIT License</p>
 </footer>
 
 </body>
