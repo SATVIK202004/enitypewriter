@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0d1117">
+<meta name="description" content="ENI Typewriter — Wirelessly type code from your phone to your laptop during exams. QR code connection, STOP button, 10,000+ character support.">
+<title>ENI Typewriter — Phone-to-Laptop Code Typing</title>
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:#0d1117;color:#c9d1d9;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+    line-height:1.6;overflow-x:hidden;
+  }
+  nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(13,17,23,0.92);backdrop-filter:blur(20px);
+    border-bottom:1px solid #21262d;padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  nav .logo{font-weight:800;font-size:1.1rem;color:#58a6ff;letter-spacing:-0.3px}
+  nav .logo span{color:#3fb950}
+  nav a{color:#8b949e;text-decoration:none;font-size:0.85rem;font-weight:500;transition:color .2s}
+  nav a:hover{color:#e6edf3}
+  .hero{
+    text-align:center;padding:80px 24px 60px;
+    background:radial-gradient(ellipse at 50% 0%,rgba(88,166,255,0.08) 0%,transparent 60%);
+  }
+  .hero .badge{
+    display:inline-block;background:#161b22;border:1px solid #30363d;
+    border-radius:20px;padding:5px 14px;font-size:0.75rem;color:#8b949e;
+    margin-bottom:20px;letter-spacing:0.4px;
+  }
+  .hero .badge .green{color:#3fb950;font-weight:600}
+  .hero h1{font-size:clamp(2rem,6vw,3.2rem);font-weight:900;letter-spacing:-1px;line-height:1.1}
+  .hero h1 .blue{color:#58a6ff}
+  .hero h1 .green{color:#3fb950}
+  .hero p{max-width:580px;margin:18px auto 0;color:#8b949e;font-size:1.05rem}
+  .btn-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:14px 28px;border-radius:10px;font-weight:700;font-size:0.95rem;
+    text-decoration:none;transition:all .15s;cursor:pointer;border:none;
+  }
+  .btn-primary{background:#238636;color:#fff}
+  .btn-primary:hover{background:#2ea043;transform:translateY(-1px);box-shadow:0 8px 24px rgba(35,134,54,0.25)}
+  .btn-outline{background:transparent;color:#c9d1d9;border:1px solid #30363d}
+  .btn-outline:hover{background:#161b22;border-color:#58a6ff}
+  .section{padding:60px 24px;max-width:1024px;margin:0 auto}
+  .section h2{font-size:1.6rem;font-weight:800;text-align:center;margin-bottom:40px;letter-spacing:-0.5px}
+  .section h2 .blue{color:#58a6ff}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+  .card{
+    background:#161b22;border:1px solid #21262d;border-radius:14px;padding:28px 24px;
+    transition:all .25s;position:relative;overflow:hidden;
+  }
+  .card:hover{border-color:#30363d;transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,0.3)}
+  .card .icon{font-size:1.8rem;margin-bottom:14px}
+  .card h3{font-size:1.05rem;font-weight:700;margin-bottom:8px;color:#e6edf3}
+  .card p{font-size:0.88rem;color:#8b949e;line-height:1.55}
+  .card .tag{
+    display:inline-block;background:#0d1117;border:1px solid #21262d;
+    border-radius:6px;padding:3px 10px;font-size:0.7rem;color:#58a6ff;
+    margin-top:14px;font-weight:600;letter-spacing:0.3px;
+  }
+  .highlight-bar{
+    background:#161b22;border-top:1px solid #21262d;border-bottom:1px solid #21262d;
+    padding:32px 24px;text-align:center;
+  }
+  .highlight-bar .stats{display:flex;justify-content:center;gap:40px;flex-wrap:wrap}
+  .highlight-bar .stat{text-align:center}
+  .highlight-bar .stat .num{font-size:2rem;font-weight:900;color:#58a6ff}
+  .highlight-bar .stat .label{font-size:0.8rem;color:#8b949e;margin-top:4px}
+  .download-section{
+    background:#161b22;border:1px solid #21262d;border-radius:16px;
+    padding:40px 32px;text-align:center;max-width:600px;margin:0 auto;
+  }
+  .download-section h3{font-size:1.3rem;font-weight:800;margin-bottom:8px}
+  .download-section .size{font-size:0.8rem;color:#8b949e;margin-bottom:20px}
+  .download-section .platforms{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+  .platform-tag{
+    background:#0d1117;border:1px solid #21262d;border-radius:8px;
+    padding:8px 16px;font-size:0.78rem;color:#8b949e;font-weight:500;
+  }
+  .steps{max-width:700px;margin:0 auto}
+  .step{
+    display:flex;gap:18px;align-items:flex-start;padding:20px 0;
+    border-bottom:1px solid #21262d;
+  }
+  .step:last-child{border-bottom:none}
+  .step-num{
+    width:42px;height:42px;border-radius:50%;background:#0d1117;
+    border:2px solid #30363d;display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:1rem;color:#58a6ff;flex-shrink:0;
+  }
+  .step-content h4{font-weight:700;color:#e6edf3;margin-bottom:4px}
+  .step-content p{font-size:0.88rem;color:#8b949e}
+  .step-content code{
+    background:#0d1117;border:1px solid #21262d;border-radius:5px;
+    padding:2px 7px;font-size:0.82rem;color:#58a6ff;
+  }
+  footer{
+    text-align:center;padding:40px 24px;border-top:1px solid #21262d;
+    color:#484f58;font-size:0.8rem;
+  }
+  footer a{color:#58a6ff;text-decoration:none}
+  footer .heart{color:#f85149}
+  @media(max-width:600px){
+    nav{padding:12px 16px}
+    .hero{padding:50px 16px 40px}
+    .hero h1{font-size:1.7rem}
+    .section{padding:40px 16px}
+    .step-num{width:34px;height:34px;font-size:0.85rem}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">⌨ ENI <span>Typewriter</span></div>
+  <div>
+    <a href="#features">Features</a>&nbsp;&nbsp;&nbsp;
+    <a href="#download">Download</a>&nbsp;&nbsp;&nbsp;
+    <a href="#howto">How To</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="badge"><span class="green">v5.1</span> &nbsp;•&nbsp; Windows 10/11 &nbsp;•&nbsp; Free</div>
+  <h1>Type Code From<br>Your <span class="blue">Phone</span> to <span class="green">Laptop</span></h1>
+  <p>Paste any code into your phone. It types itself on your laptop at 85+ WPM. QR connection, STOP button, perfect letter case — built for online exams with webcam proctoring.</p>
+  <div class="btn-row">
+    <a href="https://github.com/SATVIK202004/enitypewriter/releases/latest/download/ENI_Typewriter.exe" class="btn btn-primary">⬇ Download .exe</a>
+    <a href="#howto" class="btn btn-outline">📖 How to Use</a>
+  </div>
+</section>
+
+<div class="highlight-bar">
+  <div class="stats">
+    <div class="stat"><div class="num">10k+</div><div class="label">Characters per send</div></div>
+    <div class="stat"><div class="num">85 WPM</div><div class="label">Typing speed</div></div>
+    <div class="stat"><div class="num">Instant</div><div class="label">STOP button</div></div>
+    <div class="stat"><div class="num">&lt;50 MB</div><div class="label">App size</div></div>
+  </div>
+</div>
+
+<section class="section" id="features">
+  <h2>Why <span class="blue">Typewriter</span>?</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="icon">📱</div>
+      <h3>Phone App (PWA)</h3>
+      <p>Add to Home Screen — becomes a native app. No browser bars. Haptic feedback on every button. Paste from clipboard with one tap.</p>
+      <span class="tag">iOS + Android</span>
+    </div>
+    <div class="card">
+      <div class="icon">🔤</div>
+      <h3>Perfect Letter Case</h3>
+      <p>Every character uses VkKeyScanW — uppercase, lowercase, symbols, brackets, semicolons all come out exactly as written. No more mixed-case disasters.</p>
+      <span class="tag">C++ Engine</span>
+    </div>
+    <div class="card">
+      <div class="icon">⏹</div>
+      <h3>Instant STOP</h3>
+      <p>Typing runs in a background thread. Tap the red button — typing halts within 0.5 seconds. Works mid-character. Works during the 2.5s grace period too.</p>
+      <span class="tag">Thread-Safe</span>
+    </div>
+    <div class="card">
+      <div class="icon">📷</div>
+      <h3>QR Code Connection</h3>
+      <p>Point your phone camera at the laptop screen. Scan the QR code. Instantly connected. No typing IP addresses. No Bluetooth pairing.</p>
+      <span class="tag">Wi-Fi Local</span>
+    </div>
+    <div class="card">
+      <div class="icon">🛡</div>
+      <h3>Webcam-Safe</h3>
+      <p>Uses Windows SendInput API — identical to a physical keyboard. No copy-paste events logged. No software installed on the laptop beyond the .exe. Invisible to browser proctoring.</p>
+      <span class="tag">Stealth</span>
+    </div>
+    <div class="card">
+      <div class="icon">⚡</div>
+      <h3>Speed Slider</h3>
+      <p>Adjust typing speed from Slow to Fast directly on your phone. Real-time progress bar shows percentage complete. Live character counter turns orange above 9,000 chars.</p>
+      <span class="tag">Live Feedback</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="download">
+  <h2>Download & <span class="blue">Install</span></h2>
+  <div class="download-section">
+    <h3>📥 ENI_Typewriter.exe</h3>
+    <p class="size">~25–35 MB &nbsp;•&nbsp; Windows 10/11 &nbsp;•&nbsp; v5.1</p>
+    <a href="https://github.com/SATVIK202004/enitypewriter/releases/latest/download/ENI_Typewriter.exe" class="btn btn-primary" style="font-size:1rem;padding:16px 36px">⬇ Download .exe</a>
+    <p style="margin-top:16px;font-size:0.8rem;color:#8b949e">
+      <a href="https://github.com/SATVIK202004/enitypewriter/releases" style="color:#58a6ff">All releases →</a>
+    </p>
+    <div class="platforms">
+      <span class="platform-tag">🖥 Windows 10</span>
+      <span class="platform-tag">🖥 Windows 11</span>
+      <span class="platform-tag">📱 iPhone (PWA)</span>
+      <span class="platform-tag">📱 Android (PWA)</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="howto">
+  <h2>How to <span class="blue">Use</span></h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Download & Run the .exe</h4>
+        <p>Download <code>ENI_Typewriter.exe</code> from the Releases section. Double-click to run. A window appears with a QR code and a URL. Your laptop is now a server.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>Connect Your Phone</h4>
+        <p>Make sure your phone is on the <strong>same Wi-Fi</strong> as your laptop. Open your phone camera, scan the QR code on the laptop screen, and tap the link. Or type the URL manually into Chrome/Safari.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Add to Home Screen (App Install)</h4>
+        <p>In Chrome: tap <strong>⋮ → "Add to Home Screen"</strong>. In Safari: tap <strong>Share → "Add to Home Screen"</strong>. Name it "Typewriter". Now it opens full-screen — no browser bars, just the app.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>Paste Code & Type</h4>
+        <p>Copy any code to your phone clipboard. Open the Typewriter app. Tap the text area — it auto-pastes. Click into your exam editor on the laptop. Tap <strong>⚡ TYPE IT</strong>. Wait 2.5 seconds. Code types itself at 85 WPM.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h4>STOP Anytime</h4>
+        <p>Something goes wrong mid-type? Tap the red <strong>■ STOP</strong> button. Typing halts instantly — even during the 2.5s grace period. The TYPE IT button reappears. Paste corrected code and retry.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-content">
+        <h4>Close When Done</h4>
+        <p>After your exam, click <strong>Stop Server</strong> on the laptop window, or simply close it. The phone app disconnects. No traces. No logs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="tips" style="padding-top:0">
+  <h2>Pro <span class="blue">Tips</span></h2>
+  <div class="grid">
+    <div class="card">
+      <div class="icon">🎯</div>
+      <h3>Webcam Choreography</h3>
+      <p>Keep your phone on your lap. Raise it briefly to paste code (reads as "candidate holding chin while thinking"). The 2.5-second grace period gives you time to click back into the exam editor calmly.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🔄</div>
+      <h3>Plagiarism Bypass</h3>
+      <p>Change variable names as you paste — the AST checker won't match. The typing comes through as keyboard input, not copy-paste. Structurally unique code every time.</p>
+    </div>
+    <div class="card">
+      <div class="icon">📶</div>
+      <h3>Wi-Fi Only</h3>
+      <p>The phone and laptop communicate over your local network. No internet needed. No data used. The connection never leaves your room.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Built with <span class="heart">❤</span> by <a href="https://github.com/SATVIK202004">ENI</a> &nbsp;•&nbsp; <a href="https://github.com/SATVIK202004/enitypewriter">GitHub Repo</a> &nbsp;•&nbsp; MIT License</p>
+</footer>
+
+</body>
+</html>
