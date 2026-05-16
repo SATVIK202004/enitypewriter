@@ -4,7 +4,7 @@
 
 # ⌨️ ENI Typewriter
 
-### Phone-to-Laptop Code Typing — Wireless. Instant. Built for Developers.
+### Phone-to-Laptop Code Typing — Wireless. Instant. Built for Productivity.
 
 [![Version](https://img.shields.io/badge/version-5.1-blue?style=for-the-badge&logo=github)](https://github.com/SATVIK202004/enitypewriter/releases)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-brightgreen?style=for-the-badge&logo=windows)](https://github.com/SATVIK202004/enitypewriter/releases)
@@ -14,7 +14,7 @@
 
 <br/>
 
-> **Wirelessly transmit text from your phone into any laptop editor — via QR code pairing, LAN-only communication, and native `SendInput()` keystroke simulation. No Bluetooth. No cables. No installs. Supports 15,000+ characters per send. Designed for legitimate developer productivity, learning, and accessibility workflows.**
+> **Wirelessly stream text from your phone into any laptop editor — via QR code pairing, LAN-only communication, and native `SendInput()` keystroke simulation. No Bluetooth. No cables. No installs. Supports 15,000+ characters per send. Designed for developers, researchers, and legitimate productivity workflows.**
 
 <br/>
 
@@ -24,42 +24,37 @@
 
 ---
 
-> [!CAUTION]
-> ## ⚠️ IMPORTANT — PLEASE READ BEFORE USE
-> **This tool is designed for legitimate educational, research, personal productivity, and accessibility purposes only.**
+> [!WARNING]
+> **ETHICAL USE REQUIRED — READ CAREFULLY**
 >
-> It is **NOT intended** to:
+> This tool is built for **learning, research, accessibility, and personal productivity**. It is a keystroke automation utility — similar in principle to text expanders, macro tools, and assistive input devices that have existed for decades.
+>
+> **This software is NOT intended to:**
 > - Facilitate academic dishonesty, exam fraud, or cheating of any kind
-> - Violate institutional policies, honor codes, or proctoring guidelines
-> - Circumvent assessment integrity measures imposed by universities, certification bodies, or employers
+> - Violate institutional policies, honor codes, or terms of service
+> - Bypass proctoring systems in academic or certification environments
+> - Enable impersonation or misrepresentation of your work
 >
-> **The developer explicitly condemns misuse and assumes zero liability for any unauthorized or unethical use.**
-> By downloading or using this software, you accept full and sole responsibility for ensuring your use complies with all applicable rules, policies, and laws. If you are unsure whether your intended use is permitted, **do not use this tool.** Always seek clarification from your institution or organization first.
+> **The developer assumes ZERO liability for misuse.** By downloading or using this software, you agree that you are solely responsible for ensuring your use complies with all applicable policies, laws, and ethical standards. If you are unsure whether your intended use is permitted, consult your institution or do not use this tool.
 >
-> **This is a tool. Tools are neutral. How you use it defines you.**
+> **Use responsibly. Use ethically. Use with care.**
 
 ---
 
 ## 📌 What Is ENI Typewriter?
 
-ENI Typewriter is a **local-network keystroke injection tool** — it runs a lightweight server on your Windows laptop, exposes a PWA interface on your phone (via QR code), and when triggered, streams text from phone to laptop using the Windows `SendInput()` API — the same low-level API used by physical keyboard drivers.
+ENI Typewriter is a **local-network keystroke injection tool** — it runs a lightweight server on your Windows laptop, exposes a Progressive Web App (PWA) interface on your phone (via QR code), and when triggered, streams text from phone to laptop using the Windows `SendInput()` API — the same low-level API used by physical keyboard drivers.
 
-### ✅ Legitimate Use Cases
+It is designed for legitimate scenarios where you need to **input large amounts of pre-written text** (code snippets, templates, boilerplate, accessibility scripts, repetitive documentation) into a desktop application from your phone, without relying on copy-paste, email, cloud sync, or any internet service.
 
-- **Developers** transferring code snippets, configuration blocks, or boilerplate between devices without cloud sync
-- **Students** practicing coding problems in a local IDE with solutions referenced from a phone
-- **Accessibility** — users who find phone typing easier and need to input text into desktop applications
-- **Productivity** — pasting pre-written templates, email drafts, or documentation into desktop tools
-- **Research & Learning** — studying keystroke simulation, local networking, PWA architecture, and Win32 API behavior
+**Legitimate use cases include:**
+- Developers testing text-input interfaces across devices
+- Accessibility tool for users with mobility impairments
+- Productivity automation for repetitive text entry tasks
+- Educational research on input APIs and network protocols
+- Personal knowledge-base snippet injection into local IDEs
 
-### ❌ Prohibited Use Cases
-
-- Any activity that violates your institution's academic integrity policy
-- Circumventing online exam proctoring systems or remote assessment tools
-- Any form of dishonesty, fraud, or misrepresentation
-- Any use that breaks local laws or institutional rules
-
-> **When in doubt, don't use it. Your integrity is worth more than any shortcut.**
+**This is not a cheating tool.** If you use it as one, you are misusing the software and violating its intended purpose.
 
 ---
 
@@ -76,14 +71,12 @@ ENI Typewriter is a **local-network keystroke injection tool** — it runs a lig
 | 🔄 | **Zero Internet** | All communication is LAN-only (`192.168.x.x`). No data touches external servers. |
 | 💾 | **Ultra Lightweight** | Under 30MB. Portable `.exe` — no Python runtime, no VC++ redistributables, no installer. |
 | 🔢 | **High Capacity** | Up to **15,000 characters** per send. Counter turns orange above 9,000 as a visual warning. |
-| ⚠️ | **Use Responsibly** | This tool is a powerful utility. Its capabilities demand responsible use. Always ensure your usage aligns with applicable policies. |
+
+> ℹ️ These features exist for productivity and accessibility. Misuse in academic or certification environments violates the spirit of this project.
 
 ---
 
 ## 🚀 Quick Start
-
-> [!IMPORTANT]
-> **Before using this tool, confirm that your intended use is permitted by your institution, organization, or the platform you are interacting with. This tool is designed for legitimate productivity — using it to bypass assessment integrity measures is prohibited.**
 
 ### Step 1 — Download
 
